@@ -35,12 +35,8 @@ const Feed = () => {
         <Typography variant='h4' fontWeight='bold' mb={2} sx={{color:'white'}} >{selectedCategory} 
             <span className = 'fix1'style={{color:'#h31503'}}> Videos</span>
         </Typography>
-
+          
         {videos.length > 0 && <VideoSection videos = {[videos]}/>}
-
-
-
-
 
       </Box>
     </Stack>

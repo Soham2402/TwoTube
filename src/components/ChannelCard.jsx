@@ -3,7 +3,7 @@ import React from 'react'
 const ChannelCard = (props) => {
   return (
     <div>
-      channel
+      <p>CHANNEL</p>
     </div>
   )
 }
