@@ -6,11 +6,11 @@ import { VideoCard,ChannelCard } from '.'
 const VideoSection = ({videos}) => {
   videos = videos[0]
   return (  
-    <Stack direction='row' flexWrap="wrap" justifyContent="start" alignItems="start" gap={2}>
+    <Stack direction='row' flexWrap="wrap" justifyContent="center" alignItems="start" gap={2} sx={{paddingX:'1em'}}>
       {videos.map((item, idx) => (
         <Box key={idx}>
           {item.id.videoId && <VideoCard video = {item}/>}
-          {item.id.channelId && <ChannelCard channel = {item}/>}
+          {/* {item.id.channelId && <ChannelCard channel = {item}/>} */}
         </Box>
       ))}
     </Stack>

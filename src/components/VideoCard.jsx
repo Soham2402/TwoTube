@@ -1,10 +1,44 @@
 import React from 'react'
 
-const VideoCard = (props) => {
+import { Link } from 'react-router-dom'
+import { Card, CardContent, CardMedia, Typography } from '@mui/material'
+import { CheckCircle } from '@mui/icons-material'
+
+import { demoThumbnailUrl, demoVideoUrl,demoChannelUrl,demoVideoTitle,demoChannelTitle } from '../utils/constants'
+
+let sliceTitle = (title) => {
+  if(title.length >= 60){
+    title = title.slice(0,60)
+    return title.concat(" ...")
+  }else{
+    return title
+  }
+}
+
+let getDate = (date) => {
+  let d = new Date(date)
+  return d.toDateString()
+}
+
+const VideoCard = ({video:{id:{videoId},snippet}}) => {
+  // console.log(videoId,snippet)
   return (
-    <div>
-      video
-    </div>
+    <Card style={{backgroundColor:'#212121', maxWidth: '320px'}}   sx={{
+      ':hover': {
+        boxShadow: 20,// theme.shadows[20]
+      },
+    }}> 
+      <Link to={videoId? `/video/${videoId}`:demoVideoTitle}>
+        <CardMedia component='img'  image = {snippet?.thumbnails?.high?.url} alt = {snippet?.title} 
+        sx={{width:320, height:180, borderBottom: 'none',borderRadius:'0.5em'}}/>
+        <CardContent sx={{pb:'0.5em'}} ><Typography variant="body2" color="white">{sliceTitle(snippet?.title)}</Typography></CardContent>
+        <CardContent sx={{py:0}} ><Typography variant='caption' color="grey">{snippet?.channelTitle}</Typography></CardContent>
+        <CardContent sx={{py:0}} ><Typography variant='caption' color="grey">{getDate(snippet?.publishedAt)} </Typography></CardContent>
+      </Link>
+
+
+    </Card>
+
   )
 }
 

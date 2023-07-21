@@ -1,10 +1,10 @@
 import React from 'react'
 
+import {Stack,Box } from '@mui/material'
+
 const VideoDetail = () => {
   return (
-    <div>
-      
-    </div>
+    <p>test</p>
   )
 }
 

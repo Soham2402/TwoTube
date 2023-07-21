@@ -68,6 +68,7 @@ a {
 .fix1{
   color: #FC1503;
 }
+
 @media screen and (max-width: 900px) {
   .category-btn{
     margin: 10px;
