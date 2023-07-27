@@ -25,7 +25,7 @@ const VideoCard = ({video:{id:{videoId},snippet}}) => {
   return (
     <Card style={{backgroundColor:'#212121', maxWidth: '320px'}}   sx={{
       ':hover': {
-        boxShadow: 20,// theme.shadows[20]
+        transform:'scale(1.01)', boxShadow:20, transition: '0.25s ease-in-out' // theme.shadows[20]
       },
     }}> 
       <Link to={videoId? `/video/${videoId}`:demoVideoTitle}>
