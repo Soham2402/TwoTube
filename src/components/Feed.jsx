@@ -15,7 +15,6 @@ const Feed = () => {
 
   useEffect(()=>{
     fetchFromAPI(`search?part=snippet&q=${selectedCategory}`).then((data) => {setVideos(data.items)})
-    console.log('changed')
   },[selectedCategory]) 
 
   return (
