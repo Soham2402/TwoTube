@@ -11,6 +11,8 @@ import { fetchFromAPI } from '../utils/fetchFromAPI'
 
 const VideoDetail = () => {
   
+
+  // Getting current video details 
   const {id} = useParams()
   const [videoDetails, setVideoDetails] = useState([])
   useEffect(()=>{
@@ -18,17 +20,53 @@ const VideoDetail = () => {
     .then((data) => setVideoDetails(data.items[0]))
   },[id])
 
+  //Getting suggested video details
+  const [suggestedVideos, setSuggestedVideos] = useState([])
+  useEffect(()=> {
+    fetchFromAPI(`search?part=id,snippet,type=video,maxResults=40&relatedToVideoId=${id}`)
+    .then((data) => setSuggestedVideos(data.items))
+  },[id])
+
+  if(!videoDetails?.snippet) return 'Loading';
+  const { snippet: { title, channelId, channelTitle }, statistics: { viewCount, likeCount } } = videoDetails;
+
   if(videoDetails.snippet){
     return (
       <Box sx={{minHeight:'96vh'}}>
-      <Stack direction={{xs:'column',md:'row'}}>
+      <Stack direction={{ xs: "column", md: "row" }}>
         <Box flex={1}>
-          <Box sx={{width:'100%', position:'sticky', top:'86%'}}>
-            <ReactPlayer   url = {`https://www.youtube.com/watch?v=${id}`}  className = 'react-player' controls = {true} />
-            <Typography variant='h5' sx={{color:'white',fontWeight:'bold',paddingTop:'0.7em'}}>{videoDetails.snippet.title}</Typography>
+          <Box sx={{ width: "90%", margin:'auto', position: "sticky", top: "86px" }}>
+            <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
+            <Typography color="#fff" variant="h5" fontWeight="bold" p={2}>
+              {title}
+            </Typography>
+            <Stack direction="row" justifyContent="space-between" sx={{ color: "#fff" }} py={1} px={2} >
+              <Link to={`/channel/${channelId}`}>
+                <Typography variant='h6'  color="#fff" >
+                  {channelTitle}
+                </Typography>
+              </Link>
+              <Stack direction="row" gap="20px" alignItems="center">
+                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                  {parseInt(viewCount).toLocaleString()} views
+                </Typography>
+                <Typography variant="body1" sx={{ opacity: 0.7 }}>
+                  {parseInt(likeCount).toLocaleString()} likes
+                </Typography>
+              </Stack>
+            </Stack>
           </Box>
         </Box>
-
+      <Box sx={{width:'320px',margin:'auto', marginTop:{xs:'2em'},marginRight:{md:'1em'}}}>
+      <Stack direction='row' flexWrap="wrap" justifyContent="center" alignItems="center" gap={2} sx={{paddingX:'1em',overflow:'auto'}}>
+          {suggestedVideos.map((item, idx) => (
+            <Box key={idx}>
+              {item.id.videoId && <VideoCard video = {item}/>}
+            </Box>
+          ))}
+        </Stack>
+      </Box>
+        
       </Stack>
     </Box>
   )

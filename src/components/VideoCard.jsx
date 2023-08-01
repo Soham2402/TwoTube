@@ -21,6 +21,8 @@ let getDate = (date) => {
 }
 
 const VideoCard = ({video:{id:{videoId},snippet}}) => {
+  if(!snippet) return 'Loading';
+  
   // console.log(videoId,snippet)
   return (
     <Card style={{backgroundColor:'#212121', maxWidth: '320px'}}   sx={{
