@@ -24,10 +24,6 @@ const Feed = () => {
       <Box sx={{color:'#fff',height:{sx:'10vh',md:'92vh'},borderRight: '1px solid #3d3d3d',px:{sx:0,md:2}}}>
 
         <SideBar selectedCategory = {selectedCategory} setSelectedCategory = {setSelectedCategory} />
-
-        <Typography className='copyright' variant='body2'>
-              Copyright 2023 TwoTube
-        </Typography>
       </Box>
 
       <Box p = {2} sx={{overflow:'auto' ,height:'90vh',flex:2}}>
