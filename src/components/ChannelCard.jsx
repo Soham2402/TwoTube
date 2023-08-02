@@ -2,7 +2,6 @@ import React from 'react'
 
 import { Box,Card, CardContent,CardMedia, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
-import { demoProfilePicture } from '../utils/constants'
 
 
 const ChannelCard = ({channel:{snippet},channel}) => {

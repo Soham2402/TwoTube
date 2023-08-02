@@ -2,9 +2,8 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 import { Card, CardContent, CardMedia, Typography } from '@mui/material'
-import { CheckCircle } from '@mui/icons-material'
 
-import { demoThumbnailUrl, demoVideoUrl,demoChannelUrl,demoVideoTitle,demoChannelTitle } from '../utils/constants'
+import {demoVideoTitle} from '../utils/constants'
 
 let sliceTitle = (title) => {
   if(title.length >= 60){
