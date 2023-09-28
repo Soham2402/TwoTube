@@ -6,9 +6,10 @@ This is **TwoTube**, a YouTube web app created using Rapid API's YouTube v3 API 
 
 ## 🚀 Demo
 
-<!-- ![TwoTube Preview](https://your-preview-image-url.png) -->
+![TwoTube Preview](https://i.imgur.com/l7Cxt11.png)
 
-<!-- Check out the live demo [here](https://your-live-demo-url.com). -->
+ Check out the live demo [here](https://effortless-kringle-8daf63.netlify.app/).
+ 
 
 ## ✨ Features
 
